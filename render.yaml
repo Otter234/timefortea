@@ -1,0 +1,22 @@
+databases:
+  - name: T4Tdatabase
+    plan: free
+    databaseName: T4T
+    user: T4Tuser
+
+services:
+  - type: web
+    plan: free
+    name: T4Tdatabse
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn TeaTime_engine.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: T4Tdatabase
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
