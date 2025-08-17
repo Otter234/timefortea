@@ -6,7 +6,7 @@ set -o errexit
 pip install -r requirements.txt
 
 # convert our static asset files on Render
-python manage.py collectstatic --no-input
+python manage.py collectstatic --noinput
 
 # apply any database migrations that are outstanding
 python manage.py migrate
