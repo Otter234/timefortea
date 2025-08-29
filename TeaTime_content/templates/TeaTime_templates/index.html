@@ -1,31 +1,99 @@
-<!doctype html>
+{% extends "TeaTime_templates/base.html" %}
 {% load static %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% block head %}
+<style>
+    /* Container for side-by-side layout */
+    .container {
+        display: flex;
+        flex-direction: row;
+        /* horizontal layout */
+        justify-content: flex-start;
 
-    <title>Hello Django on Render! Anyone for tea? </title>
+        align-items: flex-start;
+        /* vertical center */
+        gap: 50px;
+        /* space between image and box */
+        margin: 50px 20px;
+        /* margin around container */
+        flex-wrap: nowrap;
+        width: 100%
+    }
 
-    <link rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-            crossorigin="anonymous">
-</head>
-<body>
-<header class="container mt-4 mb-4">
-    <a href="https://render.com">
-        <img src="{% static "render/render.png" %}" alt="Render" class="mw-100">
-    </a>
-</header>
-<main class="container">
-    <div class="row text-center justify-content-center">
-        <div class="col">
-            <h1 class="display-4">Hello World! I'd like a strong cuppa please!</h1>
+    /* Image styling */
+    .image-box img {
+        max-width: 250px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Links box styling */
+    .links-box {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1;
+        /* take remaining space */
+        min-width: 200px;
+        /* prevent it from being too narrow */
+    }
+
+    /* Bullet list styling */
+    .links-box ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .links-box li {
+        margin-bottom: 30px;
+    }
+
+    /* Link styling */
+    .links-box a {
+        text-decoration: none;
+        color: #4b0082;
+        font-weight: bold;
+    }
+
+    .links-box a:hover {
+        color: #ff4500;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex flex-row" style="gap:50px; align-items:flex-end;">
+
+        <!-- Left: Image -->
+        <div>
+            <img src="{% static 'render/tea_time.png' %}" alt="Tea Time" style="max-width:300px;">
+        </div>
+
+        <!-- Right: Two stacked boxes -->
+        <div class="d-flex flex-column" style="height:100%; justify-content:flex-end; gap:20px; flex:1;">
+
+            <!-- Top box: text only -->
+            <div style="background:#e0e0e0; padding:20px; border-radius:10px;">
+                <h1 class="display-4" style="font-size: 25px; text-align: left;">"Would you like an adventure now, or
+                    would you
+                    like to have your tea first?
+                </h1>
+                <h2 class="display-4" style="font-size: 20px; color: rgb(117, 5, 117)"><i>J. M. Barrie, Peter Pan</i>
+                    </h1>
+            </div>
+
+            <!-- Bottom box: bullet links -->
+            <div style="background:#f0f0f0; padding:20px; border-radius:10px;">
+                <h4>Tea trolley</h4>
+                <ul style="padding-left:20px; margin:0;">
+                    <li><a href="{% url 'TeaTime_content:flapjack' %}">Nice flapjacks</a></li>
+                    <li><a href="{% url 'TeaTime_content:bread_and_honey' %}">Bread and honey</a></li>
+                </ul>
+            </div>
+
         </div>
     </div>
-</main>
-</body>
-</html>
+</div>
+{% endblock %}

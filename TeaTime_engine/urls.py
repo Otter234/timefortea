@@ -23,5 +23,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('TeaTime_content.urls')),
+    path('', include(("TeaTime_content.urls", "TeaTime_content"), namespace="TeaTime_content")),
 ]
+
+

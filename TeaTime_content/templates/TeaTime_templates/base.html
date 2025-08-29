@@ -1,0 +1,31 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Tea Trolley{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- This container will appear on every page that extends base.html -->
+  <div class="container mt-4 text-center">
+      <h5 class="mb-2">This website is Junip learning how to work with Django</h5>
+      <a href="{% url 'TeaTime_content:index' %}" class="btn btn-link">Go to the tea trolley here!</a>
+      <hr>
+  </div>
+
+  <!-- Child templates insert their page-specific content here -->
+  <div class="container-fluid">
+      {% block content %}{% endblock %}
+  </div>
+
+</body>
+</html>

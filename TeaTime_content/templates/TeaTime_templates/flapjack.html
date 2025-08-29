@@ -1,0 +1,115 @@
+{% extends "TeaTime_templates/base.html" %}
+{% load static %}
+
+{% block head %}
+<style>
+    /* Container for side-by-side layout */
+    .container {
+        display: flex;
+        flex-direction: row;
+        /* horizontal layout */
+        justify-content: flex-start;
+
+        align-items: flex-start;
+        /* vertical center */
+        gap: 50px;
+        /* space between image and box */
+        margin: 50px 20px;
+        /* margin around container */
+        flex-wrap: nowrap;
+        width: 100%
+    }
+
+    /* Image styling */
+    .image-box img {
+        max-width: 250px;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    /* Links box styling */
+    .links-box {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        flex: 1;
+        /* take remaining space */
+        min-width: 200px;
+        /* prevent it from being too narrow */
+    }
+
+    /* Bullet list styling */
+    .links-box ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .links-box li {
+        margin-bottom: 10px;
+    }
+
+    /* Link styling */
+    .links-box a {
+        text-decoration: none;
+        color: #4b0082;
+        font-weight: bold;
+    }
+
+    .links-box a:hover {
+        color: #ff4500;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="d-flex flex-row" style="gap:50px; align-items:flex-end;">
+
+        <!-- Left: Image -->
+        <div>
+            <img src="{% static 'render/teacup_flapjack.png' %}" alt="Tea Time" style="max-width:300px;">
+        </div>
+
+        <!-- Right: Two stacked boxes -->
+        <div class="d-flex flex-column" style="height:100%; justify-content:flex-end; gap:20px; flex:1;">
+
+            <!-- Top box: text only -->
+            <div style="background:#e0e0e0; padding:20px; border-radius:10px;">
+                <h1 class="display-4" style="font-size: 25px; text-align: left;">"One slice, (if the quantities
+                    below are used), contains an alpine ascent fuelling 440 calories, and two slices gets me through
+                    most days in the mountains."
+                </h1>
+                <h2 class="display-4" style="font-size: 15px; color: rgb(117, 5, 117)"><i> Rocket Fuel for
+                        Hikers/Mountaintrails.ie
+                    </i>
+                    </h1>
+            </div>
+
+            <!-- Bottom box: bullet links -->
+            <div style="background:#f0f0f0; padding:20px; border-radius:10px;">
+                <h4>Flapjack recipe</h4>
+                <h5 class="display-4" style="font-size: 10px; color: rgb(117, 5, 117)"><i>250 grams Porridge oats-
+                        150 grams Dried cranberries or other dried fruit-
+                        50 grams Sunflower seeds-
+                        60-80 grams Brown Sugar (use the higher figure for a sweeter mix)
+                        180 grams Olive spread, or butter if you want it richer
+                        4 tablespoons Golden Syrup
+                        Half teaspoon cinnamon
+                        Roasted crushed hazelnuts, (or more sunflower seeds)
+                        Melt the olive spread, golden syrup and sugar in a large saucepan, then stir in the porridge
+                        oats, fruit, cinnamon and seeds. Mix thoroughly.
+                        Bake in a preheated oven at 180C for 25-30 minutes, until golden brown.
+                        Remove from oven and leave to cool, after half an hour cut into eight portions and leave to cool
+                        completely.
+                        Store in a sealed container until needed. Wrap portions in cling-film to take on your hike, each
+                        portion contains approximately 440 calories.
+                        Bon appetite!
+                    </i>
+                </h5>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
